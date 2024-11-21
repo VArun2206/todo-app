@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 import { TodoService } from '../../services/todo.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-todo',
@@ -19,10 +20,12 @@ export class TodoComponent implements OnInit {
   id!: string;
   todos!: any[];
   dtOptions: Config = {};
+  user!: any;
 
   constructor(
     private todoService: TodoService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +34,7 @@ export class TodoComponent implements OnInit {
       pageLength: 10,
     };
     this.fetchToDo();
+    this.user = this.userService.user;
   }
 
   fetchToDo() {

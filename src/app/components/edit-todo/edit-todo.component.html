@@ -1,54 +1,62 @@
-<h2 style="text-align: center">Edit Task</h2>
+<section class="pt-3">
+  <div
+    class="grid grid-cols-2 gap-3 max-lg:grid-cols-1 max-lg:pb-5 px-3 items-center"
+  >
+    <section>
+      <img class="rounded" src="images/edit-todos.png" alt="" />
+    </section>
 
-<form
-  [formGroup]="addTask"
-  (submit)="onSubmit()"
-  style="
-    padding: 2%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 30%;
-    margin: 0 auto;
-    gap: 20px;
-  "
-  class="card"
->
-  <section style="display: grid">
-    <label for="title">Title : </label>
-    <input
-      class="form-control {{
-        title.touched && title.errors
-          ? 'is-invalid'
-          : title.valid
-          ? 'is-valid'
-          : ''
-      }}"
-      type="text"
-      style="padding: 2%; font-size: large"
-      formControlName="title"
-    />
-    @if(title.errors && (title.touched || title.dirty)){
-    <span class="text-danger">Title is required</span> }
-  </section>
-  <section style="display: grid">
-    <label for="description">Description : </label>
-    <textarea
-      class="form-control {{
-        description.touched && description.errors
-          ? 'is-invalid'
-          : description.valid
-          ? 'is-valid'
-          : ''
-      }}"
-      type="text"
-      style="padding: 2%; font-size: large"
-      formControlName="description"
-    ></textarea>
-    @if(description.errors && (description.touched || description.dirty)){
-    <span class="text-danger">Description is required</span> }
-  </section>
-  <button class="btn btn-primary" type="submit" [disabled]="addTask.invalid">
-    Update
-  </button>
-</form>
+    <form
+      [formGroup]="addTask"
+      (submit)="onSubmit()"
+      class="px-2 grid gap-4 max-lg:pt-6"
+    >
+      <h2 style="text-align: center" class="text-white vk-h3 pb-6 max-lg:pb-3">
+        Edit Task
+      </h2>
+
+      <section style="display: grid">
+        <label class="text-white" for="title">Title : </label>
+        <input
+          class="form-control {{
+            title.touched && title.errors
+              ? 'is-invalid'
+              : title.valid
+              ? 'is-valid'
+              : ''
+          }}"
+          type="text"
+          style="padding: 2%; font-size: large"
+          formControlName="title"
+        />
+        @if(title.errors && (title.touched || title.dirty)){
+        <span class="text-danger">Title is required</span> }
+      </section>
+
+      <section style="display: grid">
+        <label class="text-white" for="description">Description : </label>
+        <textarea
+          class="form-control {{
+            description.touched && description.errors
+              ? 'is-invalid'
+              : description.valid
+              ? 'is-valid'
+              : ''
+          }}"
+          type="text"
+          style="padding: 2%; font-size: large"
+          formControlName="description"
+        ></textarea>
+        @if(description.errors && (description.touched || description.dirty)){
+        <span class="text-danger">Description is required</span> }
+      </section>
+      <button
+        class="btn bg-blue-900 text-white"
+        type="submit"
+        [disabled]="addTask.invalid"
+      >
+        Update
+      </button>
+    </form>
+  </div>
+</section>

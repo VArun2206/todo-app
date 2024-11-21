@@ -1,20 +1,20 @@
-<section
-  style="
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 2%;
-  "
->
-  <h2>To-Do</h2>
-  <button class="btn btn-primary" routerLink="/addToDo">Add Task</button>
+<section class="flex justify-between px-3 pt-3 pb-2 items-center">
+  <h2 class="text-2xl font-bold text-white">
+    Hey, {{ user().name | uppercase }}
+  </h2>
+  <button
+    class="vk-btn border-transparent h-fit bg-blue-900 text-white"
+    routerLink="/addToDo"
+  >
+    + Add Task
+  </button>
 </section>
 
 <section class="container">
   @if(todos && todos.length>0){
   <table class="table" datatable [dtOptions]="dtOptions">
     <thead>
-      <tr>
+      <tr class="text-white">
         <th style="text-align: center; width: 5%">S.No</th>
         <th style="text-align: center; width: 20%">Title</th>
         <th style="text-align: center; width: 60%">Description</th>
@@ -22,8 +22,8 @@
       </tr>
     </thead>
     <tbody>
-      @for(todo of todos;track todo.id;let i = $index){
-      <tr>
+      @for(todo of todos;track todo._id;let i = $index){
+      <tr class="text-white">
         <td style="text-align: center">{{ i + 1 }}</td>
         <td>
           <a
@@ -34,15 +34,17 @@
         </td>
         <td>{{ todo.description }}</td>
         <td>
-          <button
-            class="btn btn-outline-success"
-            routerLink="/editToDo/{{ todo._id }}"
-          >
-            Edit</button
-          >&nbsp;&nbsp;
-          <button class="btn btn-outline-danger" (click)="deleteTask(todo._id)">
-            Delete
-          </button>
+          <div class="flex">
+            <button
+              class="btn bg-green-500"
+              routerLink="/editToDo/{{ todo._id }}"
+            >
+              📝</button
+            >&nbsp;&nbsp;
+            <button class="btn bg-red-500" (click)="deleteTask(todo._id)">
+              🗑
+            </button>
+          </div>
         </td>
       </tr>
       }

@@ -1,2 +1,10 @@
-<app-header [title]="title"></app-header>
-<router-outlet></router-outlet>
+<section class="w-full h-screen p-5 flex justify-center bg-white">
+  <div
+    class="w-full rounded-lg shadow vk-bg-white overflow-hidden flex flex-col bg-gradient-to-b from-blue-900 to-white"
+  >
+    <app-header [title]="title"></app-header>
+    <div class="flex-1 overflow-y-scroll no-scrollbar">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</section>
