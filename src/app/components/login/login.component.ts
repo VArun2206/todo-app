@@ -30,16 +30,16 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {}
 
-  get useremail() {
-    return this.loginForm.controls['name'];
+  get userEmail() {
+    return this.loginForm.controls['email'];
   }
-  get userpassword() {
+  get userPassword() {
     return this.loginForm.controls['password'];
   }
 
   ngOnInit(): void {
     this.loginForm = this.fbu.group({
-      name: [null, [Validators.required, Validators.minLength(4)]],
+      email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required, Validators.minLength(8)]],
     });
   }
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
           console.log(this.loginForm.value);
           console.log(this.loginForm.value.password);
           if (
-            value.email === this.loginForm.value.name &&
+            value.email === this.loginForm.value.email &&
             value.password === this.loginForm.value.password
           ) {
             console.log('i am In');

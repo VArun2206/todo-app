@@ -9,7 +9,6 @@ import {
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user.service';
-import { error } from 'jquery';
 
 @Component({
   selector: 'app-register',
@@ -19,30 +18,31 @@ import { error } from 'jquery';
   styleUrl: './register.component.css',
 })
 export class RegisterComponent implements OnInit {
-  loginForm!: FormGroup;
+  registerForm!: FormGroup;
   id!: string;
+  name!: any;
   email!: any;
   password!: any;
 
   constructor(
     private userService: UserService,
     private toastr: ToastrService,
-    private fbu: FormBuilder,
+    private fbr: FormBuilder,
     private router: Router
   ) {}
 
-  get name() {
-    return this.loginForm.controls['name'];
+  get userName() {
+    return this.registerForm.controls['name'];
   }
-  get useremail() {
-    return this.loginForm.controls['email'];
+  get userEmail() {
+    return this.registerForm.controls['email'];
   }
-  get userpassword() {
-    return this.loginForm.controls['password'];
+  get userPassword() {
+    return this.registerForm.controls['password'];
   }
 
   ngOnInit(): void {
-    this.loginForm = this.fbu.group({
+    this.registerForm = this.fbr.group({
       name: [null, [Validators.required, Validators.minLength(4)]],
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required, Validators.minLength(8)]],
@@ -50,9 +50,9 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.loginForm.value);
+    console.log(this.registerForm.value);
     this.userService
-      .addUser(this.loginForm.value)
+      .addUser(this.registerForm.value)
       .then((res: any) => {
         console.log(res);
         if (res._id) {

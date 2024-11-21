@@ -18,17 +18,17 @@
         <label class="text-white" for="email">Email </label>
         <input
           class="form-control {{
-            useremail.touched && useremail.errors
+            userEmail.touched && userEmail.errors
               ? 'is-invalid'
-              : useremail.valid
+              : userEmail.valid
               ? 'is-valid'
               : ''
           }}"
           type="email"
           style="padding: 2%; font-size: large"
-          formControlName="name"
+          formControlName="email"
         />
-        @if(useremail.errors && (useremail.touched || useremail.dirty)){
+        @if(userEmail.errors && (userEmail.touched || userEmail.dirty)){
         <span class="text-danger">Email is required</span> }
       </section>
 
@@ -36,9 +36,9 @@
         <label class="text-white" for="password">Password</label>
         <input
           class="form-control {{
-            userpassword.touched && userpassword.errors
+            userPassword.touched && userPassword.errors
               ? 'is-invalid'
-              : userpassword.valid
+              : userPassword.valid
               ? 'is-valid'
               : ''
           }}"
@@ -46,8 +46,8 @@
           style="padding: 2%; font-size: large"
           formControlName="password"
         />
-        @if(userpassword.errors && (userpassword.touched ||
-        userpassword.dirty)){<span class="text-danger"
+        @if(userPassword.errors && (userPassword.touched ||
+        userPassword.dirty)){<span class="text-danger"
           >Password is required</span
         >
         }

@@ -6,6 +6,7 @@
       <h2 class="text-white vk-h3 pb-6 max-lg:pb-3" style="text-align: center">
         Register
       </h2>
+
       <section style="display: grid">
         <label class="text-white" for="name">Name :</label>
         <input
@@ -28,9 +29,9 @@
         <label class="text-white" for="email">Email Id :</label>
         <input
           class="form-control {{
-            useremail.touched && useremail.errors
+            userEmail.touched && userEmail.errors
               ? 'is-invalid'
-              : useremail.valid
+              : userEmail.valid
               ? 'is-valid'
               : ''
           }}"
@@ -38,7 +39,7 @@
           style="padding: 2%; font-size: large"
           formControlName="email"
         />
-        @if(useremail.errors && (useremail.touched || useremail.dirty)){
+        @if(userEmail.errors && (userEmail.touched || userEmail.dirty)){
         <span class="text-danger">Email is required</span> }
       </section>
 
@@ -46,9 +47,9 @@
         <label class="text-white" for="password">Password :</label>
         <input
           class="form-control {{
-            userpassword.touched && userpassword.errors
+            userPassword.touched && userPassword.errors
               ? 'is-invalid'
-              : userpassword.valid
+              : userPassword.valid
               ? 'is-valid'
               : ''
           }}"
@@ -56,8 +57,8 @@
           style="padding: 2%; font-size: large"
           formControlName="password"
         />
-        @if(userpassword.errors && (userpassword.touched ||
-        userpassword.dirty)){<span class="text-danger"
+        @if(userPassword.errors && (userPassword.touched ||
+        userPassword.dirty)){<span class="text-danger"
           >Password is required</span
         >
         }
@@ -67,7 +68,7 @@
         class="btn bg-blue-900 text-white"
         type="submit"
         style="width: 30%"
-        [disabled]="loginForm.invalid"
+        [disabled]="registerForm.invalid"
       >
         Register
       </button>
