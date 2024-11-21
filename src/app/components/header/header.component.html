@@ -1,0 +1,19 @@
+<header>
+  <nav
+    class="px-5 py-2 bg-secondary align-items-center d-flex justify-content-between"
+  >
+    <h2 class="vk-h3 text-light">{{ title }}</h2>
+    @if(user()){
+    <section class="d-flex">
+      <a class="text-light nav-link" routerLink="/">Home</a> &nbsp;&nbsp;
+      <a class="text-light nav-link" routerLink="/todo">To-Do</a> &nbsp;
+      <button class="btn btn-outline-light" (click)="logOut()">LogOut</button>
+    </section>
+    } @if(!user()){
+    <section class="d-flex">
+      <a class="text-light nav-link" routerLink="/login">Login</a> &nbsp;&nbsp;
+      <a class="text-light nav-link" routerLink="/register">Register</a> &nbsp;
+    </section>
+    }
+  </nav>
+</header>

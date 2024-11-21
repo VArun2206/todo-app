@@ -1,0 +1,68 @@
+<section
+  style="
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2%;
+  "
+>
+  <h2>To-Do</h2>
+  <button class="btn btn-primary" routerLink="/addToDo">Add Task</button>
+</section>
+
+<section class="container">
+  @if(todos && todos.length>0){
+  <table class="table" datatable [dtOptions]="dtOptions">
+    <thead>
+      <tr>
+        <th style="text-align: center; width: 5%">S.No</th>
+        <th style="text-align: center; width: 20%">Title</th>
+        <th style="text-align: center; width: 60%">Description</th>
+        <th style="text-align: center; width: 15%">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(todo of todos;track todo.id;let i = $index){
+      <tr>
+        <td style="text-align: center">{{ i + 1 }}</td>
+        <td>
+          <a
+            routerLink="/viewToDo/{{ todo._id }}"
+            class="text-decoration-none"
+            >{{ todo.title }}</a
+          >
+        </td>
+        <td>{{ todo.description }}</td>
+        <td>
+          <button
+            class="btn btn-outline-success"
+            routerLink="/editToDo/{{ todo._id }}"
+          >
+            Edit</button
+          >&nbsp;&nbsp;
+          <button class="btn btn-outline-danger" (click)="deleteTask(todo._id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  }
+  <table [border]="2" style="width: 100%" *ngIf="todos && todos.length == 0">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td>No data found</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

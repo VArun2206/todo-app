@@ -1,0 +1,78 @@
+<h2 class="py-3" style="text-align: center">Register</h2>
+
+<form
+  [formGroup]="loginForm"
+  (submit)="onSubmit()"
+  style="
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 30%;
+    margin: 0 auto;
+    gap: 20px;
+  "
+  class="card"
+>
+  <section style="display: grid">
+    <label for="name">Name</label>
+    <input
+      class="form-control {{
+        name.touched && name.errors
+          ? 'is-invalid'
+          : name.valid
+          ? 'is-valid'
+          : ''
+      }}"
+      type="email"
+      style="padding: 2%; font-size: large"
+      formControlName="name"
+    />
+    @if(name.errors && (name.touched || name.dirty)){
+    <span class="text-danger">Name is required</span> }
+  </section>
+
+  <section style="display: grid">
+    <label for="email">Email Id</label>
+    <input
+      class="form-control {{
+        useremail.touched && useremail.errors
+          ? 'is-invalid'
+          : useremail.valid
+          ? 'is-valid'
+          : ''
+      }}"
+      type="email"
+      style="padding: 2%; font-size: large"
+      formControlName="email"
+    />
+    @if(useremail.errors && (useremail.touched || useremail.dirty)){
+    <span class="text-danger">Email is required</span> }
+  </section>
+  <section style="display: grid">
+    <label for="password">Password</label>
+    <input
+      class="form-control {{
+        userpassword.touched && userpassword.errors
+          ? 'is-invalid'
+          : userpassword.valid
+          ? 'is-valid'
+          : ''
+      }}"
+      type="password"
+      style="padding: 2%; font-size: large"
+      formControlName="password"
+    />
+    @if(userpassword.errors && (userpassword.touched ||
+    userpassword.dirty)){<span class="text-danger">Password is required</span>
+    }
+  </section>
+  <button
+    class="btn btn-primary"
+    type="submit"
+    style="width: 30%"
+    [disabled]="loginForm.invalid"
+  >
+    Register
+  </button>
+</form>

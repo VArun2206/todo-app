@@ -1,0 +1,22 @@
+{
+  "todos": [
+    {
+      "id": "be28",
+      "title": "Topic - CRUD",
+      "description": "Develop a To-Do list page with Title,Description.Pages to add new tasks and to edit an existing task  were developed."
+    },
+    {
+      "id": "3f07",
+      "title": "Topic - Authentication",
+      "description": "Create a new array  of objects in todo.json(mock API).  Develop a login component and logout componentm, then implement the authentication process."
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "arun",
+      "email": "arun@gmail.com",
+      "password": "password"
+    }
+  ]
+}
