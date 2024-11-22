@@ -25,8 +25,7 @@ export class HeaderComponent implements OnInit {
     this.user = this.userService.user;
   }
 
-  logOut() {
-    localStorage.removeItem('user');
+  logOutConfirmation() {
     Swal.fire({
       title: 'Are you sure?',
       text: 'You have to login again to access your tasks!',
@@ -37,15 +36,20 @@ export class HeaderComponent implements OnInit {
       confirmButtonText: 'Yes, logout!',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: 'Logged out!',
-          text: 'Your have been logged out.',
-          icon: 'success',
-        });
+        this.logOut();
       }
     });
+  }
+
+  logOut() {
+    localStorage.removeItem('user');
     // this.toastr.success('Logged Out');
     this.userService.user.set(null);
+    Swal.fire({
+      title: 'Logged out!',
+      text: 'Your have been logged out.',
+      icon: 'success',
+    });
     return this.router.navigateByUrl('/');
   }
 }
