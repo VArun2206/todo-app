@@ -1,9 +1,14 @@
 @if(todo){
 <section class="container">
-  <h1 class="vk-h2 text-center py-3">{{ todo.title }}</h1>
+  <h1 class="vk-h2 text-center py-3 text-white">{{ todo.title }}</h1>
   <hr />
-  <h3 class="text-xl py-2" style="text-indent: 10%">{{ todo.description }}</h3>
-  <button class="vk-btn-blue-g" routerLink="/editToDo/{{ todo._id }}">
+  <h3 class="text-xl py-2 text-white" style="text-indent: 10%">
+    {{ todo.description }}
+  </h3>
+  <button
+    class="btn bg-blue-900 text-white"
+    routerLink="/edit-todo/{{ todo._id }}"
+  >
     Edit Task
   </button>
 </section>

@@ -49,13 +49,33 @@ export class TodoComponent implements OnInit {
     );
   }
 
+  deleteTaskConfirmation(id: string) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteTask(id);
+      }
+    });
+  }
   deleteTask(id: string) {
     this.todoService.deleteToDos(id).subscribe(
       (res: any) => {
         console.log(res);
         this.ngOnInit();
         // this.toastr.success('To-do deleted');
-        Swal.fire('Task deleted');
+        // Swal.fire('Task deleted');
+        Swal.fire({
+          title: 'Deleted!',
+          text: 'Your file has been deleted.',
+          icon: 'success',
+        });
       },
       (error: Error) => {
         console.log(error);

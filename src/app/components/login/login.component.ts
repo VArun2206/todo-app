@@ -53,12 +53,11 @@ export class LoginComponent implements OnInit {
           console.log(value);
 
           console.log(this.loginForm.value);
-          console.log(this.loginForm.value.password);
+
           if (
             value.email === this.loginForm.value.email &&
             value.password === this.loginForm.value.password
           ) {
-            console.log('i am In');
             return value;
           }
         });

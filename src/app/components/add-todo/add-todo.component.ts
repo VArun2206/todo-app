@@ -17,7 +17,7 @@ import { TodoService } from '../../services/todo.service';
   templateUrl: './add-todo.component.html',
   styleUrl: './add-todo.component.css',
 })
-export class AddToDOComponent implements OnInit {
+export class AddToDoComponent implements OnInit {
   addTask!: FormGroup;
 
   constructor(

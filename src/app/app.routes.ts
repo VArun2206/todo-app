@@ -5,7 +5,8 @@ import { EditToDoComponent } from './components/edit-todo/edit-todo.component';
 import { LoginComponent } from './components/login/login.component';
 import { ViewTasksComponent } from './components/view-todo/view-todo.component';
 import { RegisterComponent } from './components/register/register.component';
-import { AddToDOComponent } from './components/add-todo/add-todo.component';
+import { AddToDoComponent } from './components/add-todo/add-todo.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
   {
@@ -18,17 +19,17 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path: 'addToDO',
-    component: AddToDOComponent,
+    path: 'add-todo',
+    component: AddToDoComponent,
     canActivate: [authGuard],
   },
   {
-    path: 'editToDo/:id',
+    path: 'edit-todo/:id',
     component: EditToDoComponent,
     canActivate: [authGuard],
   },
   {
-    path: 'viewTaks/:id',
+    path: 'view-task/:id',
     component: ViewTasksComponent,
     canActivate: [authGuard],
   },
@@ -40,5 +41,9 @@ export const routes: Routes = [
     path: '',
     redirectTo: 'login',
     pathMatch: 'full',
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
   },
 ];
