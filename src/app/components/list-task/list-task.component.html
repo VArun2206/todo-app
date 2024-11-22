@@ -1,0 +1,73 @@
+<section class="flex justify-between px-3 pt-3 pb-2 items-center">
+  <h2 class="text-2xl font-bold text-white">
+    Hey, {{ user().name | uppercase }}
+  </h2>
+  <button
+    class="vk-btn border-transparent h-fit bg-blue-900 text-white"
+    routerLink="/add-task"
+  >
+    + Add Task
+  </button>
+</section>
+
+<section class="container">
+  @if(tasks && tasks.length>0){
+  <table class="table" datatable [dtOptions]="dtOptions">
+    <thead>
+      <tr class="text-white">
+        <th style="text-align: center; width: 5%">S.No</th>
+        <th style="text-align: center; width: 20%">Title</th>
+        <th style="text-align: center; width: 60%">Description</th>
+        <th style="text-align: center; width: 15%">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(task of tasks;track task._id;let i = $index){
+      <tr class="text-white">
+        <td style="text-align: center">{{ i + 1 }}</td>
+        <td>
+          <a
+            routerLink="/view-task/{{ task._id }}"
+            class="text-decoration-none"
+            >{{ task.title }}</a
+          >
+        </td>
+        <td>{{ task.description }}</td>
+        <td>
+          <div class="flex items-center">
+            <button
+              class="btn bg-blue-900 text-white"
+              routerLink="/edit-task/{{ task._id }}"
+            >
+              <i class="bi bi-pencil-square text-light"></i></button
+            >&nbsp;&nbsp;
+            <button
+              class="btn bg-blue-900 text-white"
+              (click)="deleteTaskConfirmation(task._id)"
+            >
+              <i class="bi bi-x-square text-light"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  }
+  <table [border]="2" style="width: 100%" *ngIf="tasks && tasks.length == 0">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td>No data found</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

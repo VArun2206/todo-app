@@ -1,0 +1,85 @@
+<section class="pt-3">
+  <div
+    class="grid grid-cols-2 gap-3 max-lg:grid-cols-1 max-lg:pb-5 px-3 items-center"
+  >
+    <form
+      class="px-2 grid gap-3 max-lg:pt-6"
+      [formGroup]="registerForm"
+      (submit)="onSubmit()"
+    >
+      <h2 class="text-white vk-h3 pb-6 max-lg:pb-3" style="text-align: center">
+        Register
+      </h2>
+
+      <section style="display: grid">
+        <label class="text-white" for="name">Name :</label>
+        <input
+          class="form-control {{
+            name.touched && name.errors
+              ? 'is-invalid'
+              : name.valid
+              ? 'is-valid'
+              : ''
+          }}"
+          type="email"
+          style="padding: 2%; font-size: large"
+          formControlName="name"
+        />
+        @if(name.errors && (name.touched || name.dirty)){
+        <span class="text-danger">Name is required</span> }
+      </section>
+
+      <section style="display: grid">
+        <label class="text-white" for="email">Email Id :</label>
+        <input
+          class="form-control {{
+            email.touched && email.errors
+              ? 'is-invalid'
+              : email.valid
+              ? 'is-valid'
+              : ''
+          }}"
+          type="email"
+          style="padding: 2%; font-size: large"
+          formControlName="email"
+        />
+        @if(email.errors && (email.touched || email.dirty)){
+        <span class="text-danger">Email is required</span> }
+      </section>
+
+      <section style="display: grid">
+        <label class="text-white" for="password">Password :</label>
+        <input
+          class="form-control {{
+            password.touched && password.errors
+              ? 'is-invalid'
+              : password.valid
+              ? 'is-valid'
+              : ''
+          }}"
+          type="password"
+          style="padding: 2%; font-size: large"
+          formControlName="password"
+        />
+        @if(password.errors && (password.touched || password.dirty)){<span
+          class="text-danger"
+          >Password is required</span
+        >
+        }
+      </section>
+
+      <button
+        class="btn bg-blue-900 text-white"
+        type="submit"
+        style="width: 30%"
+        [disabled]="registerForm.invalid"
+      >
+        Register
+      </button>
+    </form>
+
+    <section>
+      <img class="rounded" src="images/register.png" alt="" />
+    </section>
+  </div>
+</section>

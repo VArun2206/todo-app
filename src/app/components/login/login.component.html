@@ -1,0 +1,66 @@
+<section class="pt-3">
+  <div
+    class="grid grid-cols-2 gap-3 max-lg:grid-cols-1 max-lg:pb-5 px-3 items-center"
+  >
+    <section>
+      <img class="rounded" src="images/login.png" alt="" />
+    </section>
+
+    <form
+      [formGroup]="loginForm"
+      (submit)="onSubmit()"
+      class="px-2 grid gap-4 max-lg:pt-6"
+    >
+      <h2 class="text-white vk-h3 pb-6 max-lg:pb-3" style="text-align: center">
+        Login
+      </h2>
+      <section style="display: grid">
+        <label class="text-white" for="email">Email </label>
+        <input
+          class="form-control {{
+            userEmail.touched && userEmail.errors
+              ? 'is-invalid'
+              : userEmail.valid
+              ? 'is-valid'
+              : ''
+          }}"
+          type="email"
+          style="padding: 2%; font-size: large"
+          formControlName="email"
+        />
+        @if(userEmail.errors && (userEmail.touched || userEmail.dirty)){
+        <span class="text-danger">Email is required</span> }
+      </section>
+
+      <section style="display: grid">
+        <label class="text-white" for="password">Password</label>
+        <input
+          class="form-control {{
+            userPassword.touched && userPassword.errors
+              ? 'is-invalid'
+              : userPassword.valid
+              ? 'is-valid'
+              : ''
+          }}"
+          type="password"
+          style="padding: 2%; font-size: large"
+          formControlName="password"
+        />
+        @if(userPassword.errors && (userPassword.touched ||
+        userPassword.dirty)){<span class="text-danger"
+          >Password is required</span
+        >
+        }
+      </section>
+
+      <button
+        class="btn bg-blue-900 text-white"
+        type="submit"
+        style="width: 30%"
+        [disabled]="loginForm.invalid"
+      >
+        Login
+      </button>
+    </form>
+  </div>
+</section>
